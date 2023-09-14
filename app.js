@@ -1,9 +1,17 @@
 const express = require("express");
+// import express from "express";
 const mongoose = require("mongoose");
+// import mongoose from "mongoose";
 const methodOverride = require("method-override");
-const app = express();
+// import methodOverride from "method-override";
+const ejsMate = require("ejs-mate");
+// import ejsMate from "ejs-mate";
 const path = require("path");
+// import path from "path";
 const Campground = require("./models/campground");
+// import Campground from "/models/campground";
+
+const app = express();
 
 mongoose
     .connect("mongodb://127.0.0.1:27017/camp-critic")
@@ -18,11 +26,12 @@ mongoose
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
 app.get("/", (req, res) => {
-    res.render("home");
+    res.send("home");
 });
 
 app.get("/campgrounds", async (req, res) => {
@@ -43,7 +52,9 @@ app.post("/campgrounds", async (req, res) => {
 app.get("/campgrounds/:id", async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
-    res.render("campgrounds/show", { campground });
+    if (campground) {
+        res.render("campgrounds/show", { campground });
+    }
 });
 
 app.get("/campgrounds/:id/edit", async (req, res) => {
@@ -60,11 +71,11 @@ app.put("/campgrounds/:id", async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`);
 });
 
-app.delete("/campgrounds/:id", async(req,res)=>{
-    const {id} = req.params;
+app.delete("/campgrounds/:id", async (req, res) => {
+    const { id } = req.params;
     await Campground.findByIdAndDelete(id);
-    res.redirect("/campgrounds")
-})
+    res.redirect("/campgrounds");
+});
 
 app.listen(3000, () => {
     console.log("*** app started on port 3000 ***");
