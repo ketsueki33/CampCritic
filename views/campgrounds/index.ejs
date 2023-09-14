@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>campgrounds</title>
+    </head>
+    <body>
+        <h1>All the campgrounds</h1>
+        <div><a href="/campgrounds/new"> create</a></div>
+        <ul>
+            <% campgrounds.forEach(camp => { %>
+            <li>
+                <a href="/campgrounds/<%= camp._id %>"> <%= camp.title %></a>
+            </li>
+            <% }) %>
+        </ul>
+        <br />
+    </body>
+</html>
