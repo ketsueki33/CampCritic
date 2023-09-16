@@ -1,0 +1,6 @@
+:root {
+    --bs-body-font-family: "Roboto", sans-serif;
+}
+p {
+    word-break: break-word;
+}

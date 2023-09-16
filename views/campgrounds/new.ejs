@@ -3,15 +3,22 @@
 <div class="row">
     <h1 class="text-center">New Campground</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds" method="POST">
+        <form
+            action="/campgrounds"
+            method="POST"
+            novalidate
+            class="validated-form"
+        >
             <div class="mb-3">
                 <label class="form-label" for="title">Title:</label>
                 <input
                     class="form-control"
                     type="text"
                     name="campground[title]"
+                    required
                     id="title"
                 />
+                <div class="invalid-feedback">Enter a valid name</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location:</label>
@@ -19,8 +26,10 @@
                     class="form-control"
                     type="text"
                     name="campground[location]"
+                    required
                     id="location"
                 />
+                <div class="invalid-feedback">Enter a valid location</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="image">Image Url:</label>
@@ -28,8 +37,10 @@
                     class="form-control"
                     type="text"
                     name="campground[image]"
+                    required
                     id="image"
                 />
+                <div class="invalid-feedback">Invalid image link</div>
             </div>
             <div class="mb-3">
                 <label for="price">Campground Price:</label>
@@ -39,11 +50,13 @@
                         type="text"
                         id="price"
                         name="campground[price]"
+                        required
                         class="form-control"
                         placeholder="0.00"
                         aria-label="price"
                         aria-describedby="price-label"
                     />
+                    <div class="invalid-feedback">Enter a valid price</div>
                 </div>
             </div>
 
@@ -53,8 +66,10 @@
                     class="form-control"
                     type="text"
                     name="campground[description]"
+                    required
                     id="description"
                 ></textarea>
+                <div class="invalid-feedback">Please add a description</div>
             </div>
             <div class="mb-3">
                 <button class="btn btn-success">Add campground</button>
@@ -63,3 +78,5 @@
         <a class="btn btn-warning" href="/campgrounds">cancel</a>
     </div>
 </div>
+
+
