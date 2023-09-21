@@ -3,8 +3,8 @@
     data-bs-theme="dark"
 >
     <div class="container-fluid">
-        <a class="navbar-brand" href="/campgrounds">
-            <img src="/images/camp.png" alt="logo" width="30" height="24" />
+        <a class="navbar-brand mx-2" href="/campgrounds">
+            <img src="/images/camp.png" alt="logo" width="40" height="40" />
         </a>
         <a class="navbar-brand" href="/campgrounds">CampCritic</a>
         <button
@@ -23,6 +23,14 @@
                 <a class="nav-link" href="/">Home</a>
                 <a class="nav-link" href="/campgrounds">Campgrounds</a>
                 <a class="nav-link" href="/campgrounds/new">Add Campground</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <% if (!currentUser) { %>
+                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" href="/register">Sign Up</a>
+                <% } else { %>
+                <a class="nav-link" href="/logout">Logout</a>
+                <% } %>
             </div>
         </div>
     </div>
