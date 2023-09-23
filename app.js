@@ -1,16 +1,7 @@
-// import { setCampModel } from "./models/campground.js";
-// const Campground = setCampModel();
-// code modified here, models/campground.js and boilerplate.ejs for changing to module type
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
 
-// import { fileURLToPath } from "url"; // to add __dirname to module type
-// const __filename = fileURLToPath(import.meta.url); // to add __dirname to module type
-// const __dirname = path.dirname(__filename); // to add __dirname to module type
-
-// import express from "express";
-// import mongoose from "mongoose";
-// import methodOverride from "method-override";
-// import ejsMate from "ejs-mate";
-// import path from "path";
 
 const express = require("express");
 const mongoose = require("mongoose");

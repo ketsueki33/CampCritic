@@ -25,9 +25,22 @@ const seedDB = async () => {
             author: "650d43544f62950e49834cb5",
             location: `${cities[i].city}, ${cities[i].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: "https://source.unsplash.com/random/900x700/?camping",
             price,
             description: sample(descriptions),
+            images: [
+                {
+                    url: "https://res.cloudinary.com/dd4zt9qj1/image/upload/v1695491860/CampCritic/we3yj1w8rfewcpcfew8n.jpg",
+                    filename: "CampCritic/we3yj1w8rfewcpcfew8n",
+                },
+                {
+                    url: "https://res.cloudinary.com/dd4zt9qj1/image/upload/v1695491861/CampCritic/rridqnyspmaf9abnw2gs.jpg",
+                    filename: "CampCritic/rridqnyspmaf9abnw2gs",
+                },
+                {
+                    url: "https://res.cloudinary.com/dd4zt9qj1/image/upload/v1695491861/CampCritic/w101tppuh51phwjtrt4r.jpg",
+                    filename: "CampCritic/w101tppuh51phwjtrt4r",
+                },
+            ],
         });
         await camp.save();
     }
@@ -36,7 +49,12 @@ const seedDB = async () => {
         author: "650d43544f62950e49834cb5",
         location: "Chandigarh, Chandigarh",
         title: "Saksham's Haven",
-        image: "https://thumbs.dreamstime.com/b/alpaca-funny-hair-stands-out-blue-sky-background-detailed-headshot-which-allows-you-to-clearly-54343701.jpg",
+        images: [
+            {
+                url: "https://thumbs.dreamstime.com/b/alpaca-funny-hair-stands-out-blue-sky-background-detailed-headshot-which-allows-you-to-clearly-54343701.jpg",
+                filename: "SakshamsHaven",
+            },
+        ],
         price,
         description: "Aao kabhi haveli me...",
     });
