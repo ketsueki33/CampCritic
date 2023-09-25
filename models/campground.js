@@ -7,9 +7,9 @@ const ImageSchema = new Schema({
     filename: String,
 });
 
-ImageSchema.virtual("thumbnail").get(function(){
-    return this.url.replace("/upload","/upload/w_200")
-} )
+ImageSchema.virtual("thumbnail").get(function () {
+    return this.url.replace("/upload", "/upload/w_200");
+});
 
 const CampgroundSchema = new Schema({
     title: String,
@@ -27,6 +27,17 @@ const CampgroundSchema = new Schema({
             ref: "Review",
         },
     ],
+    geometry: {
+        type: {
+            type: String, 
+            enum: ["Point"], 
+            required: true,
+        },
+        coordinates: {
+            type: [Number],
+            required: true,
+        },
+    },
 });
 
 CampgroundSchema.post("findOneAndDelete", async function (doc) {

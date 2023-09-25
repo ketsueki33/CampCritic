@@ -3,26 +3,26 @@
 
 <div class="row mb-3">
     <div class="col-7">
-        <div id="campgroundCarousel" class="carousel slide">
-            <div class="carousel-inner">
-                <% campground.images.forEach((img,i) => { %>
-              <div class="carousel-item <%= i === 0 ? "active":"" %>">
-                <img src="<%= img.url %>" class="d-block w-100" alt="">
-              </div>
-              <% }) %>
-            </div>
-            <% if ( campground.images.length > 1 ) { %>
-                <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                  </button>
-            <% } %>
-        </div>
         <div class="card mb-3">
+            <div id="campgroundCarousel" class="carousel slide card-img-top">
+                <div class="carousel-inner">
+                    <% campground.images.forEach((img,i) => { %>
+                  <div class="carousel-item <%= i === 0 ? "active":"" %>">
+                    <img src="<%= img.url %>" class="d-block w-100" alt="">
+                  </div>
+                  <% }) %>
+                </div>
+                <% if ( campground.images.length > 1 ) { %>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#campgroundCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                <% } %>
+            </div>
             <div class="card-body">
                 <h5 class="card-title"><%= campground.title %></h5>
                 <p class="card-text"><%= campground.description %></p>
@@ -49,6 +49,7 @@
         </div>
     </div>
     <div class="col-5">
+        <div id='map' style='width: 400px; height: 300px;' class="mb-3"></div>
         <h3 >- R e v i e w s - </h3>
         <% if ( currentUser ) { %>
             <h5 class="mb-1">Leave a review!</h5>
@@ -94,3 +95,8 @@
     </div>
 </div>
 
+<script>
+    const mapToken = "<%-process.env.MAPBOX_TOKEN%>";
+    const campground = <%- JSON.stringify(campground) %> ;
+</script>
+<script src="/javascripts/showPageMap.js"></script>

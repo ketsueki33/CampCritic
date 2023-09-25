@@ -17,13 +17,18 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+        <link
+            href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css" />
     </head>
     <body class="d-flex flex-column vh-100">
         <%- include("../partials/navbar") %>
         <main class="container mt-5">
-            <%- include("../partials/flash") %>
-            <%- body %>
+            <%- include("../partials/flash") %> <%- body %>
         </main>
 
         <%- include("../partials/footer") %>
