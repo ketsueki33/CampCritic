@@ -2,7 +2,6 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
 
-
 const express = require("express");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
@@ -74,7 +73,7 @@ app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
-    res.redirect("/campgrounds");
+    res.render("home");
 });
 
 app.all("*", (req, res, next) => {

@@ -1,12 +1,18 @@
 <% layout('layouts/boilerplate') %>
+<main>
+    <header class="sticky-top"><%- include("../partials/navbar") %></header>
+    <div class="container mt-5">
+        <%- include("../partials/flash") %>
 
-<div class="row">
-    <div class="col-6 offset-3">
-        <div class="alert alert-danger" role="alert">
-            <h4 class="alert-heading">
-                <%= err.statusCode %> - <%= err.message %>
-            </h4>
-            <p><%= err.stack %></p>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">
+                        <%= err.statusCode %> - <%= err.message %>
+                    </h4>
+                    <p><%= err.stack %></p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</main>

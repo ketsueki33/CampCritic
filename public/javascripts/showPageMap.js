@@ -6,6 +6,10 @@ const map = new mapboxgl.Map({
     zoom: 10, // starting zoom
 });
 
+// adding map controls to top right of the cluster map
+const nav = new mapboxgl.NavigationControl();
+map.addControl(nav, "top-right");
+
 new mapboxgl.Marker()
     .setLngLat(campground.geometry.coordinates)
     .setPopup(
