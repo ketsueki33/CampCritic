@@ -3,10 +3,11 @@
     data-bs-theme="dark"
 >
     <div class="container-fluid">
-        <a class="navbar-brand mx-2" href="/campgrounds">
+        <a class="navbar-brand mx-2" href="/">
             <img src="/images/camp.png" alt="logo" width="40" height="40" />
         </a>
-        <a class="navbar-brand" href="/campgrounds">CampCritic</a>
+        <a class="navbar-brand" href="/"><span class="d-none d-sm-inline">CampCritic</span></a>
+        
         <button
             class="navbar-toggler"
             type="button"
@@ -29,7 +30,7 @@
                 <a class="nav-link" href="/login">Login</a>
                 <a class="nav-link" href="/register">Sign Up</a>
                 <% } else { %>
-                <a class="nav-link" href="#">Hello, <%= currentUser.username %></a>
+                <a class="nav-link" style="cursor:default" href="#">Hello, <%= currentUser.username %></a>
                 <a class="nav-link" href="/logout">Logout</a>
                 <% } %>
             </div>

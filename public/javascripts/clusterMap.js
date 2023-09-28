@@ -57,6 +57,19 @@ map.on("load", () => {
             ],
         },
     });
+    // what a a single unclustered point should look like
+    map.addLayer({
+        id: "unclustered-point",
+        type: "circle",
+        source: "campgrounds",
+        filter: ["!", ["has", "point_count"]],
+        paint: {
+            "circle-color": "#40A3BE",
+            "circle-radius": 4,
+            "circle-stroke-width": 1.5,
+            "circle-stroke-color": "#1e4965",
+        },
+    });
 
     map.addLayer({
         id: "cluster-count",
@@ -70,19 +83,8 @@ map.on("load", () => {
         },
     });
 
-    // what a a single unclustered point should look like
-    map.addLayer({
-        id: "unclustered-point",
-        type: "circle",
-        source: "campgrounds",
-        filter: ["!", ["has", "point_count"]],
-        paint: {
-            "circle-color": "#11b4da",
-            "circle-radius": 4,
-            "circle-stroke-width": 1,
-            "circle-stroke-color": "#fff",
-        },
-    });
+    
+    
 
     // inspect a cluster on click
     map.on("click", "clusters", (e) => {

@@ -1,6 +1,11 @@
 :root {
-    --bs-body-font-family: "Roboto", sans-serif;
+    --bs-body-font-family: "Manrope", sans-serif;
 }
+
+body{
+    font-family: 'Manrope', sans-serif;
+}
+
 p {
     word-break: break-word;
 }
