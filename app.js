@@ -1,6 +1,8 @@
-if (process.env.NODE_ENV !== "production") {
-    require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+//     require("dotenv").config();
+// }
+
+require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -15,15 +17,20 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const helmet = require("helmet");
+const PORT = process.env.PORT || 3000;
 
 const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 
+const MongoStore = require("connect-mongo");
+
 const app = express();
 
+const dbUrl = "mongodb://127.0.0.1:27017/camp-critic";
+
 mongoose
-    .connect("mongodb://127.0.0.1:27017/camp-critic")
+    .connect(dbUrl)
     .then(() => {
         console.log("Connected to Database");
     })
@@ -40,9 +47,20 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
+const store = new MongoStore({
+    mongoUrl: dbUrl,
+    secret: process.env.SECRET,
+    touchAfter: 24 * 3600,
+});
+
+store.on("error", function (e) {
+    console.log("Session Store error - ", e);
+});
+
 const sessionConfig = {
+    store: store,
     name: "verstappen",
-    secret: "ketsueki",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -140,6 +158,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error", { err });
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("*** app started on port 3000 ***");
 });
