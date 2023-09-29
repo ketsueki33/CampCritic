@@ -27,7 +27,8 @@ const MongoStore = require("connect-mongo");
 
 const app = express();
 
-const dbUrl = "mongodb://127.0.0.1:27017/camp-critic";
+// "mongodb://127.0.0.1:27017/camp-critic";
+const dbUrl = process.env.DB_URL;
 
 mongoose
     .connect(dbUrl)
