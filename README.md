@@ -16,7 +16,7 @@ This project was created using Node.js, Express.js, MongoDB, and Bootstrap. Pass
 
 ![screenshot2](public/images/screenshots/screen2.png)
 
-## ![screenshot3](public/images/screenshots/screen3.png)
+![screenshot3](public/images/screenshots/screen3.png)
 
 ---
 
